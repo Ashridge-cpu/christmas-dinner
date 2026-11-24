@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1e6b32">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Christmas Dinner">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Take Christmas dinner plate orders for everyone at the table.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Christmas Dinner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- ===== Peas ===== -->
+    <radialGradient id="gPea" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#c6ee6e"/>
+      <stop offset="45%" stop-color="#7fbf2e"/>
+      <stop offset="100%" stop-color="#3d7a14"/>
+    </radialGradient>
+    <radialGradient id="gPea2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#b8e45a"/>
+      <stop offset="50%" stop-color="#6aaa28"/>
+      <stop offset="100%" stop-color="#2f6210"/>
+    </radialGradient>
+
+    <!-- ===== Gravy ===== -->
+    <linearGradient id="gBoat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff8ee"/>
+      <stop offset="55%" stop-color="#f0e0c8"/>
+      <stop offset="100%" stop-color="#d4b894"/>
+    </linearGradient>
+    <linearGradient id="gGravy" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0%" stop-color="#a86a32"/>
+      <stop offset="40%" stop-color="#6b3a16"/>
+      <stop offset="100%" stop-color="#3f220c"/>
+    </linearGradient>
+    <linearGradient id="gGravyShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".45"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gGoldRim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6e27a"/>
+      <stop offset="50%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#a87410"/>
+    </linearGradient>
+
+    <!-- ===== Chicken skin / meat ===== -->
+    <linearGradient id="gSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3c888"/>
+      <stop offset="45%" stop-color="#e0993a"/>
+      <stop offset="100%" stop-color="#b05c18"/>
+    </linearGradient>
+    <linearGradient id="gSkinDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0a050"/>
+      <stop offset="100%" stop-color="#8a3e10"/>
+    </linearGradient>
+    <linearGradient id="gMeat" x1="0" y1="0" x2=".4" y2="1">
+      <stop offset="0%" stop-color="#fff6e4"/>
+      <stop offset="55%" stop-color="#f0d8a8"/>
+      <stop offset="100%" stop-color="#e0b878"/>
+    </linearGradient>
+    <radialGradient id="gBird" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#f6d49a"/>
+      <stop offset="50%" stop-color="#e09a40"/>
+      <stop offset="100%" stop-color="#9a4a16"/>
+    </radialGradient>
+
+    <!-- ===== Stuffing ===== -->
+    <linearGradient id="gStuff" x1="0" y1="0" x2=".3" y2="1">
+      <stop offset="0%" stop-color="#e8c880"/>
+      <stop offset="50%" stop-color="#c99440"/>
+      <stop offset="100%" stop-color="#8a5a1c"/>
+    </linearGradient>
+
+    <!-- ===== Parsnip ===== -->
+    <linearGradient id="gParsnip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8e6"/>
+      <stop offset="50%" stop-color="#f0dc9a"/>
+      <stop offset="100%" stop-color="#d4b05a"/>
+    </linearGradient>
+    <linearGradient id="gParsnipEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8b860"/>
+      <stop offset="100%" stop-color="#a06a20"/>
+    </linearGradient>
+
+    <!-- ===== Potato ===== -->
+    <linearGradient id="gPot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe9a0"/>
+      <stop offset="40%" stop-color="#e8c04a"/>
+      <stop offset="100%" stop-color="#b06e18"/>
+    </linearGradient>
+    <linearGradient id="gPotFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff6d0"/>
+      <stop offset="100%" stop-color="#e8d48a"/>
+    </linearGradient>
+    <linearGradient id="gPotCrisp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4a040"/>
+      <stop offset="100%" stop-color="#7a3e0c"/>
+    </linearGradient>
+
+    <!-- ===== Sprout ===== -->
+    <radialGradient id="gSprout" cx="38%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#b8e06a"/>
+      <stop offset="55%" stop-color="#4a8a2a"/>
+      <stop offset="100%" stop-color="#2a5a16"/>
+    </radialGradient>
+    <radialGradient id="gSproutCut" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4f0c0"/>
+      <stop offset="40%" stop-color="#d4e080"/>
+      <stop offset="80%" stop-color="#6aaa3a"/>
+      <stop offset="100%" stop-color="#3d6a20"/>
+    </radialGradient>
+
+    <!-- ===== Carrot ===== -->
+    <linearGradient id="gCarrot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb45a"/>
+      <stop offset="45%" stop-color="#f07818"/>
+      <stop offset="100%" stop-color="#c04808"/>
+    </linearGradient>
+    <linearGradient id="gCarrotGlaze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- ===== Yorkshire ===== -->
+    <linearGradient id="gYorkOut" x1="0" y1="0" x2=".2" y2="1">
+      <stop offset="0%" stop-color="#f3d48a"/>
+      <stop offset="40%" stop-color="#e0a040"/>
+      <stop offset="100%" stop-color="#8a4a10"/>
+    </linearGradient>
+    <radialGradient id="gYorkWell" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#f8e8b8"/>
+      <stop offset="60%" stop-color="#e0b060"/>
+      <stop offset="100%" stop-color="#a06020"/>
+    </radialGradient>
+
+    <!-- ===== Pig in blanket ===== -->
+    <linearGradient id="gSausage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8906a"/>
+      <stop offset="50%" stop-color="#c05a32"/>
+      <stop offset="100%" stop-color="#8a3018"/>
+    </linearGradient>
+    <linearGradient id="gBacon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0a090"/>
+      <stop offset="35%" stop-color="#c05038"/>
+      <stop offset="70%" stop-color="#f0d0b0"/>
+      <stop offset="100%" stop-color="#9a3020"/>
+    </linearGradient>
+    <linearGradient id="gBaconFat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f4dcc4"/>
+      <stop offset="50%" stop-color="#e8b090"/>
+      <stop offset="100%" stop-color="#c07050"/>
+    </linearGradient>
+
+    <filter id="softShadow" x="-20%" y="-15%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.6" flood-color="#5a3a18" flood-opacity=".28"/>
+    </filter>
+    <filter id="tinyShadow" x="-20%" y="-15%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.9" flood-color="#5a3a18" flood-opacity=".25"/>
+    </filter>
+  </defs>
+
+  <!-- ===================== PEAS ===================== -->
+  <symbol id="food-peas" viewBox="0 0 100 100">
+    <g filter="url(#softShadow)">
+      <!-- mound of peas, back row to front -->
+      <g id="peaDot">
+        <!-- positions chosen to form a piled mound -->
+      </g>
+      <!-- back -->
+      <circle cx="38" cy="42" r="9.2" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="52" cy="38" r="9.6" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="66" cy="43" r="8.8" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="30" cy="54" r="9.4" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="45" cy="50" r="10" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="61" cy="51" r="9.5" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="74" cy="56" r="8.6" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <!-- front -->
+      <circle cx="24" cy="66" r="9" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="38" cy="64" r="10.2" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="53" cy="63" r="10" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="67" cy="66" r="9.3" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="32" cy="78" r="8.5" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="47" cy="77" r="9.2" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="62" cy="79" r="8.4" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <!-- top -->
+      <circle cx="44" cy="28" r="8.2" fill="url(#gPea)" stroke="#3a6a14" stroke-width="1.1"/>
+      <circle cx="57" cy="26" r="7.6" fill="url(#gPea2)" stroke="#3a6a14" stroke-width="1.1"/>
+      <!-- highlights -->
+      <g fill="#fff" opacity=".45">
+        <ellipse cx="41" cy="25" rx="2.4" ry="1.5"/>
+        <ellipse cx="49" cy="35" rx="2.6" ry="1.6"/>
+        <ellipse cx="35" cy="61" rx="2.8" ry="1.7"/>
+        <ellipse cx="50" cy="60" rx="2.5" ry="1.5"/>
+        <ellipse cx="64" cy="63" rx="2.3" ry="1.4"/>
+        <ellipse cx="44" cy="74" rx="2.4" ry="1.5"/>
+        <ellipse cx="28" cy="51" rx="2.2" ry="1.3"/>
+        <ellipse cx="70" cy="53" rx="2.1" ry="1.3"/>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- ===================== GRAVY ===================== -->
+<symbol id="food-gravy" viewBox="0 0 100 100">
+    <g filter="url(#softShadow)">
+      <!-- Side-on sauce boat: long hull, tall handle, pointed spout, pouring gravy -->
+      <path d="M26 44c-16 0-20 18-8 26 5 3 10 1 12-4" fill="none" stroke="#efe0c8" stroke-width="7.5" stroke-linecap="round"/>
+      <path d="M26 44c-16 0-20 18-8 26 5 3 10 1 12-4" fill="none" stroke="#a07a48" stroke-width="2" stroke-linecap="round"/>
+      <path d="M22 50c1-10 14-20 32-20 12 0 24 6 30 12l14-8 8 6-12 10c3 6 1 16-8 22-10 8-30 10-42 4-12-6-18-14-22-26z" fill="url(#gBoat)" stroke="#a07a48" stroke-width="1.55"/>
+      <ellipse cx="50" cy="42" rx="26" ry="8" fill="#efe0c8" stroke="url(#gGoldRim)" stroke-width="2.3"/>
+      <ellipse cx="50" cy="42.5" rx="22" ry="5.6" fill="url(#gGravy)"/>
+      <ellipse cx="44" cy="41" rx="10" ry="2.2" fill="#fff" opacity=".3"/>
+      <path d="M76 46l16-10 6 5-14 11z" fill="url(#gBoat)" stroke="#a07a48" stroke-width="1.2"/>
+      <path d="M92 42c4 8 2 18 0 24" fill="none" stroke="#5a2e10" stroke-width="3.2" stroke-linecap="round"/>
+      <ellipse cx="90" cy="70" rx="8" ry="3.4" fill="#5a2e10"/>
+      <ellipse cx="88" cy="68.5" rx="3.5" ry="1.2" fill="#fff" opacity=".18"/>
+      <path d="M30 60c8 8 22 12 36 6" fill="none" stroke="#fff" stroke-width="2" opacity=".3" stroke-linecap="round"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== WHOLE CHICKEN (tile) ===================== -->
+<symbol id="food-chicken" viewBox="0 0 100 100">
+    <g filter="url(#softShadow)">
+      <ellipse cx="50" cy="86" rx="38" ry="8" fill="#e8dcc8" stroke="#c4b090" stroke-width="1.2"/>
+      <ellipse cx="50" cy="84" rx="30" ry="4.5" fill="#fff" opacity=".35"/>
+      <path d="M30 62c-14 8-22 22-12 30 6 5 14 2 18-6 3-6 8-14 9-18" fill="url(#gSkinDark)" stroke="#7a3a10" stroke-width="1.3"/>
+      <ellipse cx="20" cy="90" rx="5" ry="3.8" fill="#f3d9b0" stroke="#7a3a10" stroke-width="1.1"/>
+      <path d="M24 58c0-16 16-34 40-36 20-2 36 12 36 30 0 14-10 26-26 32-14 6-30 4-40-6-8-8-10-14-10-20z" fill="url(#gBird)" stroke="#7a3a10" stroke-width="1.5"/>
+      <path d="M34 52c-2 10 4 20 16 22 10 2 16-6 16-14 0-8-8-12-16-14-6-1-14 2-16 6z" fill="url(#gSkin)" stroke="#7a3a10" stroke-width="1.2"/>
+      <path d="M40 58c5 5 12 5 16-1" fill="none" stroke="#a05018" stroke-width="1" opacity=".5"/>
+      <path d="M32 68c-10 12-14 24-6 30 6 4 13 0 16-8 3-8 6-16 5-22" fill="url(#gSkin)" stroke="#7a3a10" stroke-width="1.3"/>
+      <ellipse cx="28" cy="96" rx="5.2" ry="3.8" fill="#f3d9b0" stroke="#7a3a10" stroke-width="1.1"/>
+      <path d="M82 48c8 0 12 8 8 14-4 4-10 4-14 2" fill="url(#gSkinDark)" stroke="#7a3a10" stroke-width="1.15"/>
+      <path d="M48 34c10-4 22-2 30 8" fill="none" stroke="#fff" stroke-width="2.2" opacity=".35" stroke-linecap="round"/>
+      <ellipse cx="56" cy="46" rx="12" ry="7" fill="#fff" opacity=".15"/>
+      <ellipse cx="72" cy="42" rx="6" ry="3.5" fill="#8a3e10" opacity=".22"/>
+      <ellipse cx="46" cy="64" rx="5" ry="3" fill="#8a3e10" opacity=".16"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== CHICKEN SLICE (plate) ===================== -->
+  <symbol id="food-chicken-slice" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <!-- slice body -->
+      <path d="M18 40c2-16 18-28 40-26 16 2 32 14 36 30 3 12-6 28-26 34-18 6-38 0-50-14-8-10-8-18 0-24z" fill="url(#gMeat)" stroke="#b08950" stroke-width="1.3"/>
+      <!-- muscle fibres, subtle -->
+      <g fill="none" stroke="#d4b07a" stroke-width=".8" opacity=".55">
+        <path d="M30 44c10 2 24 4 40 0"/>
+        <path d="M28 52c12 3 26 3 42-2"/>
+        <path d="M32 60c10 2 22 2 34-2"/>
+      </g>
+      <!-- roasted skin cap along the top-right edge -->
+      <path d="M48 16c16 0 38 10 44 30 2 8-2 16-10 14-8-14-22-24-40-28-2-6 2-16 6-16z" fill="url(#gSkin)" stroke="#7a3a10" stroke-width="1.2"/>
+      <path d="M62 22c8 4 16 12 20 22" fill="none" stroke="#fff" stroke-width="1.6" opacity=".3" stroke-linecap="round"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== DRUMSTICK (plate, large) ===================== -->
+<symbol id="food-chicken-drum" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)" transform="translate(6,0) scale(0.88)">
+      <path d="M30 14c20-8 50 0 58 24 7 20-4 40-26 48-18 6-36-6-40-24-3-14 0-38 8-48z" fill="url(#gSkin)" stroke="#7a3a10" stroke-width="1.5"/>
+      <path d="M30 58c-2 10-2 18 2 24 3 4 3 6 1 10-4 4-10 14-4 22 5 7 14 2 20-10 5-10 8-20 6-28" fill="url(#gSkinDark)" stroke="#7a3a10" stroke-width="1.3"/>
+      <g transform="translate(28,102) rotate(-16)">
+        <ellipse cx="-5" cy="0" rx="7.2" ry="5.4" fill="#f3d9b0" stroke="#7a3a10" stroke-width="1.2"/>
+        <ellipse cx="6" cy="0" rx="6.6" ry="5" fill="#f3d9b0" stroke="#7a3a10" stroke-width="1.2"/>
+        <ellipse cx="-5" cy="0" rx="2.4" ry="1.8" fill="#e0c090"/>
+        <ellipse cx="6" cy="0" rx="2.2" ry="1.6" fill="#e0c090"/>
+      </g>
+      <ellipse cx="56" cy="26" rx="14" ry="8" fill="#fff" opacity=".26"/>
+      <ellipse cx="70" cy="44" rx="7" ry="4" fill="#8a3e10" opacity=".22"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== STUFFING ===================== -->
+  <symbol id="food-stuffing" viewBox="0 0 100 100">
+    <g filter="url(#softShadow)">
+      <!-- lumpy mound built from overlapping blobs -->
+      <ellipse cx="50" cy="62" rx="34" ry="24" fill="url(#gStuff)" stroke="#7a4a14" stroke-width="1.4"/>
+      <ellipse cx="36" cy="50" rx="16" ry="14" fill="#d4a450" stroke="#7a4a14" stroke-width="1"/>
+      <ellipse cx="60" cy="46" rx="18" ry="15" fill="#e0b460" stroke="#7a4a14" stroke-width="1"/>
+      <ellipse cx="50" cy="40" rx="14" ry="12" fill="#c99438" stroke="#7a4a14" stroke-width="1"/>
+      <ellipse cx="28" cy="64" rx="12" ry="10" fill="#c08030" stroke="#7a4a14" stroke-width="1"/>
+      <ellipse cx="70" cy="64" rx="13" ry="11" fill="#d4a048" stroke="#7a4a14" stroke-width="1"/>
+      <!-- crumb flecks -->
+      <g fill="#8a4a14" opacity=".55">
+        <ellipse cx="40" cy="58" rx="2.2" ry="1.4" transform="rotate(-20 40 58)"/>
+        <ellipse cx="56" cy="70" rx="2.6" ry="1.5" transform="rotate(15 56 70)"/>
+        <ellipse cx="64" cy="54" rx="2" ry="1.2"/>
+        <ellipse cx="34" cy="72" rx="1.8" ry="1.1"/>
+        <ellipse cx="48" cy="50" rx="1.6" ry="1"/>
+      </g>
+      <!-- sage leaves -->
+      <g fill="#4a8a28" stroke="#2a5a14" stroke-width=".7">
+        <ellipse cx="44" cy="44" rx="6" ry="2.6" transform="rotate(-30 44 44)"/>
+        <ellipse cx="62" cy="40" rx="5.5" ry="2.3" transform="rotate(25 62 40)"/>
+        <ellipse cx="54" cy="60" rx="5" ry="2.1" transform="rotate(-10 54 60)"/>
+      </g>
+      <!-- a cranberry -->
+      <circle cx="70" cy="50" r="4.2" fill="#c02828" stroke="#8a1010" stroke-width=".8"/>
+      <circle cx="69" cy="48.5" r="1.2" fill="#fff" opacity=".4"/>
+      <!-- shine -->
+      <ellipse cx="42" cy="48" rx="8" ry="4" fill="#fff" opacity=".2"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== PARSNIP (one baton) ===================== -->
+<symbol id="food-parsnip" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <path d="M16 72c-4-8 4-18 18-38 12-16 24-30 34-36 6-4 11 1 9 10-4 16-6 30 2 44 6 12 10 26 2 32-8 6-24 4-40-4-12-6-18-4-25-8z" fill="url(#gParsnip)" stroke="#a07a30" stroke-width="1.4"/>
+      <!-- stronger caramelised edge -->
+      <path d="M20 70c-2-8 6-20 16-36 8-12 16-22 24-30" fill="none" stroke="#b06a18" stroke-width="4.2" stroke-linecap="round" opacity=".55"/>
+      <path d="M22 68c0-6 8-18 16-32" fill="none" stroke="#8a4a10" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+      <!-- cut face -->
+      <ellipse cx="24" cy="74" rx="11" ry="8.5" transform="rotate(-32 24 74)" fill="#fff4d8" stroke="#c4a060" stroke-width="1.15"/>
+      <ellipse cx="24" cy="74" rx="4.2" ry="3.2" transform="rotate(-32 24 74)" fill="#e0c070"/>
+      <!-- roasted flecks -->
+      <g fill="#a06a20" opacity=".4">
+        <circle cx="50" cy="36" r="1.7"/>
+        <circle cx="62" cy="24" r="1.3"/>
+        <circle cx="46" cy="50" r="1.5"/>
+        <circle cx="58" cy="48" r="1.2"/>
+      </g>
+      <path d="M38 50c8-10 18-24 24-36" fill="none" stroke="#fff" stroke-width="2.1" opacity=".32" stroke-linecap="round"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== POTATO (one roastie) ===================== -->
+<symbol id="food-potato" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <!-- chunky faceted roastie, not a ball -->
+      <path d="M22 46c4-18 18-30 36-32 14-2 28 6 34 20 6 12 8 22 2 34-6 14-20 24-36 24-16 0-30-10-34-24-3-10-4-16-2-22z" fill="url(#gPot)" stroke="#8a5a14" stroke-width="1.5"/>
+      <!-- dark crispy ridge / corner -->
+      <path d="M54 16c16 0 32 12 36 28-4 2-10 4-14 2-6-8-14-18-22-30z" fill="url(#gPotCrisp)"/>
+      <path d="M78 40c6 8 8 20 2 32l-10-6c4-8 4-16 8-26z" fill="#7a3e0c" opacity=".45"/>
+      <!-- broken fluffy face, angular -->
+      <path d="M28 44l22-10 16 8-6 24-24 6z" fill="url(#gPotFace)" stroke="#c4a050" stroke-width="1.05"/>
+      <path d="M34 48l10-4 8 4-2 10-12 2z" fill="#fff" opacity=".28"/>
+      <!-- oil shine on crisp skin -->
+      <path d="M60 36c6-2 14 0 18 6" fill="none" stroke="#fff" stroke-width="2" opacity=".35" stroke-linecap="round"/>
+      <ellipse cx="70" cy="58" rx="4" ry="2.6" fill="#6a3208" opacity=".35"/>
+      <ellipse cx="40" cy="70" rx="3.2" ry="2.2" fill="#6a3208" opacity=".3"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== SPROUT (whole) ===================== -->
+  <symbol id="food-sprout" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <circle cx="50" cy="52" r="32" fill="url(#gSprout)" stroke="#2a5a16" stroke-width="1.5"/>
+      <!-- leaf layers -->
+      <path d="M50 22c14 8 22 20 24 34 2 12-4 24-16 30" fill="none" stroke="#2a5a16" stroke-width="1.2" opacity=".55"/>
+      <path d="M28 40c8-10 20-16 32-14" fill="none" stroke="#2a5a16" stroke-width="1.2" opacity=".45"/>
+      <path d="M36 30c-4 12-4 26 4 38 6 10 16 16 28 16" fill="#3d6a20" opacity=".22"/>
+      <!-- a peeling outer leaf -->
+      <path d="M22 48c-8 8-8 22 2 28 8 4 16-2 14-12-2-8 0-16 6-20-10-2-18 0-22 4z" fill="#5a8a30" stroke="#2a5a16" stroke-width="1.1"/>
+      <!-- stem scar -->
+      <ellipse cx="50" cy="80" rx="6" ry="3" fill="#d8e8a0" stroke="#4a6a20" stroke-width=".8"/>
+      <ellipse cx="50" cy="80" rx="2" ry="1.2" fill="#6a8a30"/>
+      <!-- highlight -->
+      <ellipse cx="40" cy="40" rx="10" ry="6" fill="#fff" opacity=".28"/>
+      <!-- tiny roasted edge -->
+      <path d="M70 36c4 2 8 8 8 14" fill="none" stroke="#5a3a10" stroke-width="1.4" opacity=".25" stroke-linecap="round"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== SPROUT (cut) ===================== -->
+  <symbol id="food-sprout-cut" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <circle cx="50" cy="52" r="32" fill="url(#gSproutCut)" stroke="#2a5a16" stroke-width="1.5"/>
+      <!-- cross-section rings / pattern -->
+      <circle cx="50" cy="52" r="22" fill="none" stroke="#7aaa40" stroke-width="2" opacity=".55"/>
+      <circle cx="50" cy="52" r="13" fill="none" stroke="#8aba48" stroke-width="1.6" opacity=".7"/>
+      <circle cx="50" cy="52" r="5.5" fill="#f0e8a8" stroke="#7a9a30" stroke-width="1"/>
+      <!-- tiny yellow buds in a spiral hint -->
+      <g fill="#e8e090">
+        <circle cx="50" cy="36" r="2"/><circle cx="62" cy="42" r="1.8"/>
+        <circle cx="66" cy="54" r="1.7"/><circle cx="60" cy="66" r="1.8"/>
+        <circle cx="48" cy="70" r="1.7"/><circle cx="36" cy="64" r="1.8"/>
+        <circle cx="32" cy="52" r="1.7"/><circle cx="38" cy="40" r="1.8"/>
+      </g>
+      <!-- rind -->
+      <circle cx="50" cy="52" r="32" fill="none" stroke="#3d6a20" stroke-width="5" stroke-opacity=".35"/>
+      <ellipse cx="40" cy="40" rx="8" ry="5" fill="#fff" opacity=".25"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== CARROT (one baton) ===================== -->
+  <symbol id="food-carrot" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <path d="M16 64c0-8 8-16 28-28 18-12 32-22 40-24 8-2 12 4 10 12-4 16-10 28-22 40-12 12-26 20-38 20-10 0-18-8-18-20z" fill="url(#gCarrot)" stroke="#a04008" stroke-width="1.4"/>
+      <!-- darker roasted underside -->
+      <path d="M22 68c8 6 22 8 36 0 10-6 18-16 24-28" fill="none" stroke="#8a2800" stroke-width="3" opacity=".2" stroke-linecap="round"/>
+      <!-- cut face -->
+      <ellipse cx="22" cy="66" rx="11" ry="9" transform="rotate(-28 22 66)" fill="#ffc078" stroke="#c05010" stroke-width="1.1"/>
+      <ellipse cx="22" cy="66" rx="4.5" ry="3.6" transform="rotate(-28 22 66)" fill="#ff9a40" opacity=".7"/>
+      <!-- glaze -->
+      <path d="M36 48c10-8 22-16 32-22" fill="none" stroke="#fff" stroke-width="2.4" opacity=".35" stroke-linecap="round"/>
+      <ellipse cx="58" cy="36" rx="7" ry="3" fill="#fff" opacity=".2"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== YORKSHIRE PUDDING ===================== -->
+  <symbol id="food-yorkshire" viewBox="0 0 100 100">
+    <g filter="url(#softShadow)">
+      <!-- outer risen cup, irregular, taller on the left -->
+      <path d="M22 48c-6-20 4-36 24-40 10-2 16 4 20 2 8-3 22 6 26 20 4 12 10 18 8 28-2 14-16 28-40 30-26 2-40-14-38-40z" fill="url(#gYorkOut)" stroke="#7a3e0c" stroke-width="1.6"/>
+      <!-- puffy rim bumps -->
+      <path d="M20 46c-4-8 0-20 10-26" fill="none" stroke="#c47a20" stroke-width="3" opacity=".35" stroke-linecap="round"/>
+      <!-- inner well -->
+      <ellipse cx="54" cy="58" rx="26" ry="18" fill="url(#gYorkWell)" stroke="#a06020" stroke-width="1.2"/>
+      <!-- deeper centre -->
+      <ellipse cx="54" cy="60" rx="14" ry="9" fill="#c47a28" opacity=".45"/>
+      <!-- inner rim catch-light -->
+      <path d="M36 52c6-8 18-12 30-8 8 3 14 10 16 16" fill="none" stroke="#fff" stroke-width="2" opacity=".28" stroke-linecap="round"/>
+      <!-- crispy high edge highlight -->
+      <path d="M28 36c6-12 18-18 30-14" fill="none" stroke="#fff6d0" stroke-width="2.2" opacity=".4" stroke-linecap="round"/>
+      <!-- a slightly darker baked blotch -->
+      <ellipse cx="74" cy="44" rx="6" ry="4" fill="#6a3008" opacity=".25"/>
+    </g>
+  </symbol>
+
+  <!-- ===================== PIG IN BLANKET ===================== -->
+  <symbol id="food-pig" viewBox="0 0 100 100">
+    <g filter="url(#tinyShadow)">
+      <!-- sausage body slightly diagonal -->
+      <g transform="rotate(-28 50 50)">
+        <!-- sausage ends peeking -->
+        <ellipse cx="18" cy="50" rx="10" ry="14" fill="url(#gSausage)" stroke="#7a2810" stroke-width="1.2"/>
+        <ellipse cx="82" cy="50" rx="10" ry="14" fill="url(#gSausage)" stroke="#7a2810" stroke-width="1.2"/>
+        <!-- bacon wrap (middle barrel) -->
+        <rect x="22" y="34" width="56" height="32" rx="14" fill="url(#gBacon)" stroke="#7a2810" stroke-width="1.3"/>
+        <!-- bacon rasher stripes -->
+        <g stroke="none">
+          <path d="M28 34c4 8 4 24 0 32h6c4-8 4-24 0-32z" fill="#f4d0b0" opacity=".85"/>
+          <path d="M40 34c5 8 5 24 0 32h5c5-8 5-24 0-32z" fill="#c04028" opacity=".75"/>
+          <path d="M52 34c4 8 4 24 0 32h6c4-8 4-24 0-32z" fill="#f4d0b0" opacity=".85"/>
+          <path d="M64 34c5 8 5 24 0 32h5c5-8 5-24 0-32z" fill="#c04028" opacity=".7"/>
+        </g>
+        <!-- wrap overlap edge -->
+        <path d="M24 42c20-4 40-4 56 0" fill="none" stroke="#7a2810" stroke-width="1" opacity=".35"/>
+        <!-- shine on bacon -->
+        <path d="M30 42c12-2 24-2 36 2" fill="none" stroke="#fff" stroke-width="2" opacity=".3" stroke-linecap="round"/>
+        <!-- browned sausage end highlights -->
+        <ellipse cx="16" cy="46" rx="3" ry="4" fill="#fff" opacity=".2"/>
+        <ellipse cx="84" cy="46" rx="3" ry="4" fill="#fff" opacity=".2"/>
+      </g>
+    </g>
+  </symbol>
+</svg>
+
+
+  <div id="app">
+    <main class="stage-wrap">
+      <aside class="menu-col">
+        <button type="button" class="menu-arrow" id="menuUp" aria-label="Scroll the menu up">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+        </button>
+        <div class="menu-list" id="menuList"></div>
+        <button type="button" class="menu-arrow" id="menuDown" aria-label="Scroll the menu down">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </aside>
+
+      <section class="stage">
+        <header class="diner-wrap">
+          <div class="diner-label-row">
+            <p class="diner-label">Diner Name</p>
+            <button type="button" class="gear" id="settingsBtn" aria-label="Settings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6 1 1 1.5 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="diner-row">
+            <button type="button" class="chev" id="prevDiner" aria-label="Previous diner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="diner-current" id="dinerBtn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="name" id="dinerName">Grandad Mark</span>
+              <span class="caret" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </span>
+            </button>
+            <button type="button" class="chev" id="nextDiner" aria-label="Next diner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <div class="diner-dropdown" id="dinerDropdown" hidden></div>
+        </header>
+
+        <div class="plate-card" id="plateCard">
+          <div class="plate" id="plate">
+            <p class="plate-hint" id="plateHint">Tap a food on the left to put it on the plate</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-order" id="orderBtn">ORDER</button>
+          <button type="button" class="btn btn-list" id="listBtn">
+            LIST
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 9V3h12v6"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <path d="M6 14h12v7H6z"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="banner">
+      <img src="chefs-banner.jpg" width="1100" height="733" alt="Billy, Max and George in chef hats, with the words Merry Christmas">
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="portion" class="overlay" hidden>
+    <div class="card" role="dialog" aria-labelledby="portionTitle" aria-modal="true">
+      <h2 id="portionTitle">Food</h2>
+      <p class="sub">How much would they like?</p>
+      <div class="portion-row">
+        <button type="button" class="portion-opt" data-portion="S"><span class="ltr">S</span><span class="word">Small</span></button>
+        <button type="button" class="portion-opt" data-portion="M"><span class="ltr">M</span><span class="word">Medium</span></button>
+        <button type="button" class="portion-opt" data-portion="L"><span class="ltr">L</span><span class="word">Large</span></button>
+      </div>
+      <button type="button" class="btn-remove" id="portionRemove">Take off the plate</button>
+      <button type="button" class="btn-ghost" id="portionClose">Close</button>
+    </div>
+  </div>
+
+  <div id="listView" class="overlay sheet-page" hidden>
+    <div class="sheet-bar no-print">
+      <button type="button" id="closeList" aria-label="Back to the plates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <h1>Kitchen list</h1>
+      <span style="flex:0 0 44px"></span>
+    </div>
+    <div class="sheet-body" id="listBody"></div>
+  </div>
+
+  <div id="settingsView" class="overlay sheet-page" hidden>
+    <div class="sheet-bar">
+      <button type="button" id="closeSettings" aria-label="Back to the plates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <h1>Settings</h1>
+      <span style="flex:0 0 44px"></span>
+    </div>
+    <div class="sheet-body">
+      <div class="how-to">
+        <h3>How to take the orders</h3>
+        <ol>
+          <li>Swipe, or use the arrows, to pick a person.</li>
+          <li>Tap a food on the left to put it on the plate.</li>
+          <li>Tap the food again to choose Small, Medium or Large, or to take it off.</li>
+          <li>Press Order to save that plate and move on.</li>
+          <li>Press List when you are ready for the kitchen sheet. You can print it or share it.</li>
+        </ol>
+      </div>
+      <h2 style="font-size:18px;margin:8px 0 10px;color:#6b3a1a">People at the table</h2>
+      <ul class="settings-list" id="settingsList"></ul>
+      <div class="field">
+        <label for="newDinerName">Add a diner</label>
+        <input id="newDinerName" type="text" maxlength="40" placeholder="Name" autocomplete="off" enterkeyhint="done">
+      </div>
+      <button type="button" class="btn-add" id="addDinerBtn">Add diner</button>
+      <button type="button" class="btn-danger" id="startAgain" style="margin-top:18px">Start again</button>
+      <p class="version" id="appVersion"></p>
+    </div>
+  </div>
+
+  <div id="renameModal" class="overlay center" hidden>
+    <div class="card" role="dialog" aria-labelledby="renameTitle" aria-modal="true">
+      <h2 id="renameTitle">Rename diner</h2>
+      <input type="hidden" id="renameId">
+      <div class="field">
+        <label for="renameInput">Name</label>
+        <input id="renameInput" type="text" maxlength="40" autocomplete="off">
+      </div>
+      <button type="button" class="btn-ok" id="renameSave">Save name</button>
+      <button type="button" class="btn-ghost" id="renameCancel">Cancel</button>
+    </div>
+  </div>
+
+  <div id="confirm" class="overlay center" hidden>
+    <div class="card" role="dialog" aria-labelledby="confirmMsg" aria-modal="true">
+      <h2>Please confirm</h2>
+      <p class="sub" id="confirmMsg"></p>
+      <button type="button" class="btn-danger" id="confirmOk">Yes</button>
+      <button type="button" class="btn-ghost" id="confirmCancel">Cancel</button>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
