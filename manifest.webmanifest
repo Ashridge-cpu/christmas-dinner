@@ -1,0 +1,17 @@
+{
+  "id": "/christmas-dinner/",
+  "name": "Christmas Dinner",
+  "short_name": "Dinner",
+  "description": "Take Christmas dinner plate orders for everyone at the table.",
+  "start_url": "/christmas-dinner/",
+  "scope": "/christmas-dinner/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6efe2",
+  "theme_color": "#1e6b32",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
